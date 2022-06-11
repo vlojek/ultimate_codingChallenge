@@ -1,0 +1,20 @@
+{
+  "name": "coding_challenge",
+  "version": "1.0.0",
+  "description": "Basic server for Coding Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "“echo \\”Error: no test specified\\” && exit 1\"",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlojek/ultimate_codingChallenge.git"
+  },
+  "author": "vlojek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vlojek/ultimate_codingChallenge/issues"
+  },
+  "homepage": "https://github.com/vlojek/ultimate_codingChallenge#readme"
+}
