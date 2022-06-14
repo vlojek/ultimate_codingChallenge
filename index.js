@@ -8,33 +8,33 @@ app.get("/region/:regionName", async (req, res) => {
     let regionName = req.params.regionName
     let regionSum = 0
     let regionMax = 0
+    let allCapitals = ""
     const response = await axios.get("https://restcountries.com/v3.1/region/" + regionName)
     regionName = response.data[0].region
 
     for (let i = 0; i < response.data.length; i++) {
       regionSum += response.data[i].population
-    }
-
-    for (let i = 0; i < response.data.length; i++) {
       if (response.data[i].population > regionMax) {
         regionMax = response.data[i].population
         regionMaxName = response.data[i].name.common
         regionMaxEmoji = response.data[i].flag
       }
+      allCapitals += response.data[i].capital + ", "
     }
 
     res.send(
-      `${regionName} has a total population of ${regionSum.toLocaleString("en-US")}. 
-      <br><br> The largest population lives in ${regionMaxEmoji} ${regionMaxName} at ${regionMax.toLocaleString("en-US")} people.`
+      `${regionName} has a total population of ${regionSum.toLocaleString("en-US")}. <br><br> 
+      The largest population lives in ${regionMaxEmoji} ${regionMaxName} at ${regionMax.toLocaleString("en-US")} people. 
+      <br><br>  All capitals in this region are: ${allCapitals}`
     )
   } catch (err) {
     console.error(err)
-    res.send("Bad input, probably.")
+    res.send("Something went wrong.")
   }
 })
 
 app.listen(port, () => {
-  console.log("Example app listening on port ${port}")
+  console.log(`Listening on port ${port}.`)
 })
 
 /*
